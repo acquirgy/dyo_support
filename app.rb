@@ -20,7 +20,7 @@ get '/' do
 end
 
 get '/pub/:id' do
-  @image_url = '://res.cloudinary.com/di6knt3yo/image/upload/' + params[:id] + '.png'
+  @image_url = 'https://res.cloudinary.com/di6knt3yo/image/upload/' + params[:id] + '.png'
   @image_url.gsub!(/-/, '/')
 
   erb :cloudinary
