@@ -34,11 +34,13 @@ Cloudinary is a service used for handling image uploads that dyo_support uses. I
 
 ## Hosting
 
-The app is currently hosted on Heroku as `safe-dusk-4217`. If the URL changes,
+The app is currently hosted on Heroku as
+[`thermospas-dyo-support`](https://thermospas-dyo-support.herokuapp.com/). If
+the URL changes,
 be sure to change the `API_URL` in the `thermospas-dyo` Heroku app.
 
 ## Deploying
 
 1. Install the [Heroku toolbelt](https://toolbelt.heroku.com/)
-2. Add the Heroku Git remote: `git remote add heroku git@heroku.com:safe-dusk-4217.git`
+2. Add the Heroku Git remote: `git@heroku.com:thermospas-dyo-support.git`
 3. Push the `master` branch to the Heroku remote: `git push heroku master`
