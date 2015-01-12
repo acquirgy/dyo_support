@@ -15,18 +15,25 @@ configure do
   end
 end
 
-get '/' do
-  'steamy'
+if development?
+  API_PREFIX_PATH = '/api'
+else
+  API_PREFIX_PATH = ''
 end
 
-get '/pub/:id' do
+get "#{API_PREFIX_PATH}/" do
+  puts Time.now.to_s
+  Time.now.to_s
+end
+
+get "#{API_PREFIX_PATH}/pub/:id" do
   @image_url = 'https://res.cloudinary.com/di6knt3yo/image/upload/' + params[:id] + '.png'
   @image_url.gsub!(/-/, '/')
 
   erb :cloudinary
 end
 
-post '/upload-image' do
+post "#{API_PREFIX_PATH}/upload-image" do
   content_type :json
 
   image_data = request['image_data']
