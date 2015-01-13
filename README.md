@@ -44,3 +44,10 @@ be sure to change the `API_URL` in the `thermospas-dyo` Heroku app.
 1. Install the [Heroku toolbelt](https://toolbelt.heroku.com/)
 2. Add the Heroku Git remote: `git@heroku.com:thermospas-dyo-support.git`
 3. Push the `master` branch to the Heroku remote: `git push heroku master`
+
+## Social Sharing Configuration
+
+The information for social sharing with og tags are set in
+`views/cloudinary.erb`. Adjust the `og:title`, `og:description`, and `og:image`
+to change what gets displayed for social sharing with sites that use the og
+tags.
