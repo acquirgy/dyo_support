@@ -9,9 +9,9 @@ require 'cloudinary/utils'
 
 configure do
   Cloudinary.config do |config|
-    config.cloud_name = "di6knt3yo"
-    config.api_key = "325765674544992"
-    config.api_secret = "lf0nSTOWgFqj_FsprXIhXtszae4"
+    config.cloud_name = "thermospas"
+    config.api_key = "292598792272471"
+    config.api_secret = "_30wu4Lzil091pBTlW59684Kbko"
   end
 end
 
@@ -27,7 +27,7 @@ get "#{API_PREFIX_PATH}/" do
 end
 
 get "#{API_PREFIX_PATH}/pub/:id" do
-  @image_url = 'https://res.cloudinary.com/di6knt3yo/image/upload/' + params[:id] + '.png'
+  @image_url = 'https://res.cloudinary.com/thermospas/image/upload/' + params[:id] + '.png'
   @image_url.gsub!(/-/, '/')
 
   erb :cloudinary
