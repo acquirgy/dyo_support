@@ -12,16 +12,28 @@ basic HTTP API that handles the following:
   This allows social sharing with og tags to work as expected. This HTML page
   redirects to the ThermoSpas home page.
 
-## Developing
+## Developing in Vagrant
+
+Follow these steps to get the app working in a vagrant box:
+
+1. Update vagrant.yml if needed (defaults to rsync)
+2. Run `vagrant up` (this will take a while the first time, grab a drink)
+3. Run `vagrant ssh`
+4. Run `cd /vagrant`
+5. Run the app: `ruby -o 0.0.0.0 app.rb`
+6. Add `192.168.53.102  thermospas-support.local` to your hosts file (`/etc/hosts`)
+7. View [http://thermospas-support.local:4567/api/](http://thermospas-support.local:4567/api/)
+
+## Developing Locally
 
 Follow these steps to get the app working locally:
 
 1. Install Ruby 2.1.3, which is specified in the `Gemfile`
-1. Clone the repo: `git@github.com:acquirgy/dyo_support.git`
-1. Move into the directory: `cd dyo_support`
-1. Install the dependencies: `bundle install`
-1. Run the app: `ruby app.rb`
-1. View [http://localhost:4567/api/](http://localhost:4567/api/) to make sure it
+2. Clone the repo: `git@github.com:acquirgy/dyo_support.git`
+3. Move into the directory: `cd dyo_support`
+4. Install the dependencies: `bundle install`
+5. Run the app: `ruby app.rb`
+6. View [http://localhost:4567/api/](http://localhost:4567/api/) to make sure it
    is working as expected
 
 When developing locally, the `/api/` prefix is added to routes to ensure that it

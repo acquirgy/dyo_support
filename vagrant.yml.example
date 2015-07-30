@@ -1,0 +1,3 @@
+vm:
+  synced_folder:
+    type: rsync
