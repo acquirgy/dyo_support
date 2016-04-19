@@ -16,7 +16,7 @@ basic HTTP API that handles the following:
 
 Follow these steps to get the app working locally:
 
-1. Install Ruby 2.1.3, which is specified in the `Gemfile`
+1. Install Ruby 2.3.0, which is specified in the `Gemfile`
 1. Clone the repo: `git@github.com:acquirgy/dyo_support.git`
 1. Move into the directory: `cd dyo_support`
 1. Install the dependencies: `bundle install`
