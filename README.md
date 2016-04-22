@@ -11,12 +11,14 @@ basic HTTP API that handles the following:
 - Displaying an HTML page with any given Cloudinary image based on the params.
   This allows social sharing with og tags to work as expected. This HTML page
   redirects to the ThermoSpas home page.
+- Proxying quote requests to ThermoSpas via the /api/store endpoint to
+  get around the https requirement for the web app.
 
 ## Developing
 
 Follow these steps to get the app working locally:
 
-1. Install Ruby 2.1.3, which is specified in the `Gemfile`
+1. Install Ruby 2.3.0, which is specified in the `Gemfile`
 1. Clone the repo: `git@github.com:acquirgy/dyo_support.git`
 1. Move into the directory: `cd dyo_support`
 1. Install the dependencies: `bundle install`
@@ -37,7 +39,12 @@ Cloudinary is a service used for handling image uploads that dyo_support uses. I
 The app is currently hosted on Heroku as
 [`thermospas-dyo-support`](https://thermospas-dyo-support.herokuapp.com/). If
 the URL changes,
-be sure to change the `API_URL` in the `thermospas-dyo` Heroku app.
+be sure to change the support app URL in the `thermospas-dyo` app.
+
+The `WEB_URL` ENV is used by the app for allowing requests from specific
+locations in production. Be sure to set it to something like:
+`'https://shining-heat-2332.firebaseapp.com'`, without the trailing
+slash.
 
 ## Deploying
 

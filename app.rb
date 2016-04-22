@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'json'
+require 'net/http'
 
 # not sure if I need all of these
 require 'cloudinary'
@@ -15,25 +16,37 @@ configure do
   end
 end
 
-if development?
-  API_PREFIX_PATH = '/api'
-else
-  API_PREFIX_PATH = ''
-end
+WEB_URL = if production?
+            ENV['WEB_URL']
+          elsif development?
+            'http://localhost:4200'
+          end
+STORE_URL = 'http://thermospas.com/store.php'
 
-get "#{API_PREFIX_PATH}/" do
+get "/" do
   puts Time.now.to_s
   Time.now.to_s
 end
 
-get "#{API_PREFIX_PATH}/pub/:id" do
+get "/pub/:id" do
   @image_url = 'https://res.cloudinary.com/thermospas/image/upload/' + params[:id] + '.png'
   @image_url.gsub!(/-/, '/')
 
   erb :cloudinary
 end
 
-post "#{API_PREFIX_PATH}/upload-image" do
+post "/api/store" do
+  headers 'Access-Control-Allow-Origin' => WEB_URL
+
+  store_url = STORE_URL
+  uri = URI.parse(store_url)
+  params = Rack::Utils.parse_nested_query(request.body.read)
+  Net::HTTP.post_form(uri, params)
+end
+
+post "/api/upload-image" do
+  headers 'Access-Control-Allow-Origin' => WEB_URL
+
   content_type :json
 
   image_data = request['image_data']

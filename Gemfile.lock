@@ -6,7 +6,6 @@ GEM
     cloudinary (1.0.79)
       aws_cf_signer
       rest-client
-    json (1.8.1)
     mime-types (2.4.3)
     multi_json (1.10.1)
     netrc (0.10.1)
@@ -36,6 +35,8 @@ PLATFORMS
 
 DEPENDENCIES
   cloudinary
-  json
   sinatra
   sinatra-contrib
+
+BUNDLED WITH
+   1.11.2
