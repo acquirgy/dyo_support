@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'json'
+require 'net/http'
 
 # not sure if I need all of these
 require 'cloudinary'
@@ -20,6 +21,7 @@ WEB_URL = if production?
           elsif development?
             'http://localhost:4200'
           end
+STORE_URL = 'http://thermospas.com/store.php'
 
 get "/" do
   puts Time.now.to_s
@@ -31,6 +33,15 @@ get "/pub/:id" do
   @image_url.gsub!(/-/, '/')
 
   erb :cloudinary
+end
+
+post "/api/store" do
+  headers 'Access-Control-Allow-Origin' => WEB_URL
+
+  store_url = STORE_URL
+  uri = URI.parse(store_url)
+  params = Rack::Utils.parse_nested_query(request.body.read)
+  Net::HTTP.post_form(uri, params)
 end
 
 post "/api/upload-image" do
